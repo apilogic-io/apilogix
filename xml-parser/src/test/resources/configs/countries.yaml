@@ -1,0 +1,3 @@
+contextPath: "ReadResponse"
+arrayPaths:
+  - "OTA_ReadRS/ReadResponse/Countries"

@@ -1,0 +1,9 @@
+/gradle.properties
+/gradlew
+/gradlew.bat
+/apilogix.iml
+**/gradle/
+/.idea/
+**/build/
+**/.gradle
+

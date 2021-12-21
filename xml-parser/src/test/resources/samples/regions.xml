@@ -1,0 +1,43 @@
+<OTA_ReadRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2021-04-04T05:51:25">
+  <Success/>
+  <ReadResponse>
+    <Regions>
+      <Region RegionCode="59">
+        <RegionName>Algarve</RegionName>
+        <CountryName>PORTUGAL</CountryName>
+        <CountryCode>9</CountryCode>
+        <CountryISO>PT</CountryISO>
+      </Region>
+      <Region RegionCode="58">
+        <RegionName>Azzorre</RegionName>
+        <CountryName>PORTUGAL</CountryName>
+        <CountryCode>9</CountryCode>
+        <CountryISO>PT</CountryISO>
+      </Region>
+      <Region RegionCode="61">
+        <RegionName>Costa di Estoril e Sintra</RegionName>
+        <CountryName>PORTUGAL</CountryName>
+        <CountryCode>9</CountryCode>
+        <CountryISO>PT</CountryISO>
+      </Region>
+      <Region RegionCode="60">
+        <RegionName>Litorale di Alentejo</RegionName>
+        <CountryName>PORTUGAL</CountryName>
+        <CountryCode>9</CountryCode>
+        <CountryISO>PT</CountryISO>
+      </Region>
+      <Region RegionCode="57">
+        <RegionName>Madeira</RegionName>
+        <CountryName>PORTUGAL</CountryName>
+        <CountryCode>9</CountryCode>
+        <CountryISO>PT</CountryISO>
+      </Region>
+      <Region RegionCode="202">
+        <RegionName>Porto Santo</RegionName>
+        <CountryName>PORTUGAL</CountryName>
+        <CountryCode>9</CountryCode>
+        <CountryISO>PT</CountryISO>
+      </Region>
+    </Regions>
+  </ReadResponse>
+</OTA_ReadRS>

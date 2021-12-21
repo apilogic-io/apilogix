@@ -1,0 +1,2 @@
+rootProject.name = 'apilogix'
+include 'xml-parser'
