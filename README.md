@@ -1,8 +1,8 @@
 ## Apilogix
 
-####JAVA lightweight libraries intended to be used in lambda functions
+###JAVA lightweight libraries intended to be used in lambda functions
 
-#XML-Parser
+##XML-Parser
 
 ## Gradle
 ```groovy
