@@ -3,6 +3,7 @@ package io.gihub.apilogic.xml.parser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.stream.XMLStreamException;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
 public class XmlParserTest {
 
     @Test
-    public void testCountriesSample() throws IOException, XmlParsingException {
+    public void testCountriesSample() throws IOException, XMLStreamException {
         var url = getClass().getClassLoader().getResource("./samples/countries.xml");
         var config = getClass().getClassLoader().getResource("./configs/countries.yaml");
         Assertions.assertNotNull(config);

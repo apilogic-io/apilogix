@@ -15,7 +15,16 @@ compile group: 'io.github.apilogic-io', name: 'xml-parser', version: '0.1'
  var url = getClass().getClassLoader().getResource("./samples/countries.xml");
  var config = getClass().getClassLoader().getResource("./configs/countries.yaml");
  var response = XmlParser.parse(url, config);
-// the response will be an XML flattened map 
+ //or
+ InputStream inputStream = ... get the stream
+ var response = XmlParser.parse(inputStream, config);
+ //or
+ String xml = ... some xml
+ var response = XmlParser.parse(xml, config);
+ //or
+ File file = getFile()
+ var response = XmlParser.parse(file, config);
+ // the response will be an XML flattened map 
 ```
 
 ### Example

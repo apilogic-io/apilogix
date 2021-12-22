@@ -12,8 +12,7 @@ import javax.xml.stream.events.Attribute;
 import javax.xml.stream.events.EndElement;
 import javax.xml.stream.events.StartElement;
 import javax.xml.stream.events.XMLEvent;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
@@ -23,29 +22,29 @@ import static io.gihub.apilogic.xml.parser.FunctionUtils.represent;
 
 public class XmlParser {
 
-  public static Map<String, Object> parse(URL url, URL config) throws IOException, XmlParsingException {
-    var xml = getRequestXml(url);
+  public static Map<String, Object> parse(File xmlFile, URL config) throws IOException, XMLStreamException {
     var xmlParserConfig = new Yaml().loadAs(config.openStream(), XmlParserConfig.class);
-    try {
-      return parse(xml, xmlParserConfig);
-    }
-    catch (Exception e) {
-      throw new XmlParsingException();
-    }
+    var stream = new FileInputStream(xmlFile);
+    return getStringObjectMap(xmlParserConfig, stream.readAllBytes());
   }
 
-  private static Map<String, Object> parse(String xml, XmlParserConfig xmlParserConfig) throws Exception {
-    System.out.println("Starting xml parser");
-    long startTime = System.currentTimeMillis();
-    Map<String, Object> result = xmlParser(xml, xmlParserConfig);
-    long endTime = System.currentTimeMillis();
-    long duration = (endTime - startTime);
-    String message = "Transformation duration " + duration;
-    System.out.println(message);
-    return result;
+  public static Map<String, Object> parse(InputStream xmlStream, URL config) throws IOException, XMLStreamException {
+    var xmlParserConfig = new Yaml().loadAs(config.openStream(), XmlParserConfig.class);
+    return getStringObjectMap(xmlParserConfig, xmlStream.readAllBytes());
   }
 
-  private static Map<String, Object> xmlParser(String xml, XmlParserConfig xmlParserConfig) throws Exception {
+  public static Map<String, Object> parse(String xml, URL config) throws IOException, XMLStreamException {
+    var xmlParserConfig = new Yaml().loadAs(config.openStream(), XmlParserConfig.class);
+    return xmlParser(xml, xmlParserConfig);
+  }
+
+  public static Map<String, Object> parse(URL xmlUrl, URL config) throws IOException, XMLStreamException {
+    var xml = getRequestXml(xmlUrl);
+    var xmlParserConfig = new Yaml().loadAs(config.openStream(), XmlParserConfig.class);
+    return xmlParser(xml, xmlParserConfig);
+  }
+
+  private static Map<String, Object> xmlParser(String xml, XmlParserConfig xmlParserConfig) throws XMLStreamException {
     byte[] byteArray = xml.getBytes(StandardCharsets.UTF_8);
     return getStringObjectMap(xmlParserConfig, byteArray);
   }
