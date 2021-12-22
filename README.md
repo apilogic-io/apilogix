@@ -6,7 +6,7 @@
 
 ## Gradle
 ```groovy
-compile group: 'io.github.apilogic-io', name: 'xml-parser', version: '0.1'
+compile group: 'io.github.apilogic-io', name: 'xml-parser', version: '0.1.1'
 ```
 
 ### Usage
