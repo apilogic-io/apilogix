@@ -1,3 +1,4 @@
 contextPath: "ReadResponse"
 arrayPaths:
   - "OTA_ReadRS/ReadResponse/Countries"
+  - "OTA_ReadRS/ReadResponse/Countries/Country/CountryFeedBacks"

@@ -1,0 +1,24 @@
+<OTA_ReadRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2021-04-06T10:31:51">
+    <Success/>
+    <ReadResponse>
+        <Countries>
+            <Country CountryCode="30">
+                <CountryName>ANDORRA</CountryName>
+                <CountryISO>AD</CountryISO>
+                <CountryFeedBacks>
+                    <Feed id="1">very well</Feed>
+                    <Feed id="2">very well</Feed>
+                </CountryFeedBacks>
+            </Country>
+            <Country CountryCode="44">
+                <CountryName>UNITED ARAB EMIRATES</CountryName>
+                <CountryISO>AE</CountryISO>
+                <CountryFeedBacks>
+                    <Feed id="1">poor</Feed>
+                    <Feed id="2">great</Feed>
+                </CountryFeedBacks>
+            </Country>
+
+        </Countries>
+    </ReadResponse>
+</OTA_ReadRS>

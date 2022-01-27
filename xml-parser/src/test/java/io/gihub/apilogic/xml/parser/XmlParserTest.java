@@ -24,4 +24,23 @@ public class XmlParserTest {
         countries.forEach(country -> Assertions.assertNotNull(((Map) country).get("CountryName")));
     }
 
+    @Test
+    public void testArrayInArray() throws IOException, XMLStreamException {
+        var url = getClass().getClassLoader().getResource("./samples/countriesWithFeedBack.xml");
+        var config = getClass().getClassLoader().getResource("./configs/countries.yaml");
+        Assertions.assertNotNull(config);
+        var response = XmlParser.parse(url, config);
+        Assertions.assertNotNull(response);
+        Assertions.assertNotNull(response.get("Countries"));
+        var countries = ((List)response.get("Countries"));
+        Assertions.assertFalse(countries.isEmpty());
+        countries.forEach(country -> Assertions.assertNotNull(((Map) country).get("CountryName")));
+        countries.forEach(country -> {
+            var countryFeedBacks = ((Map) country).get("CountryFeedBacks");
+            Assertions.assertNotNull(countryFeedBacks);
+            Assertions.assertTrue(countryFeedBacks instanceof List);
+            Assertions.assertFalse(((List<?>) countryFeedBacks).isEmpty());
+        });
+    }
+
 }
