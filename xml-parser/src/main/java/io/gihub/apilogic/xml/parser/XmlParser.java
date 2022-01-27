@@ -44,6 +44,10 @@ public class XmlParser {
     return xmlParser(xml, xmlParserConfig);
   }
 
+  public static Map<String, Object> xmlParser(InputStream inputStream, XmlParserConfig xmlParserConfig) throws XMLStreamException {
+    return getStringObjectMap(xmlParserConfig, inputStream);
+  }
+
   private static Map<String, Object> xmlParser(String xml, XmlParserConfig xmlParserConfig) throws XMLStreamException {
     byte[] byteArray = xml.getBytes(StandardCharsets.UTF_8);
     var inputStream = new ByteArrayInputStream(byteArray);
