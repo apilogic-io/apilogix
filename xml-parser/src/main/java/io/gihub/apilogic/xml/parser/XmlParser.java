@@ -25,12 +25,12 @@ public class XmlParser {
   public static Map<String, Object> parse(File xmlFile, URL config) throws IOException, XMLStreamException {
     var xmlParserConfig = new Yaml().loadAs(config.openStream(), XmlParserConfig.class);
     var stream = new FileInputStream(xmlFile);
-    return getStringObjectMap(xmlParserConfig, stream.readAllBytes());
+    return getStringObjectMap(xmlParserConfig, stream);
   }
 
   public static Map<String, Object> parse(InputStream xmlStream, URL config) throws IOException, XMLStreamException {
     var xmlParserConfig = new Yaml().loadAs(config.openStream(), XmlParserConfig.class);
-    return getStringObjectMap(xmlParserConfig, xmlStream.readAllBytes());
+    return getStringObjectMap(xmlParserConfig, xmlStream);
   }
 
   public static Map<String, Object> parse(String xml, URL config) throws IOException, XMLStreamException {
@@ -46,11 +46,11 @@ public class XmlParser {
 
   private static Map<String, Object> xmlParser(String xml, XmlParserConfig xmlParserConfig) throws XMLStreamException {
     byte[] byteArray = xml.getBytes(StandardCharsets.UTF_8);
-    return getStringObjectMap(xmlParserConfig, byteArray);
+    var inputStream = new ByteArrayInputStream(byteArray);
+    return getStringObjectMap(xmlParserConfig, inputStream);
   }
 
-  private static Map<String, Object> getStringObjectMap(XmlParserConfig xmlParserConfig, byte[] byteArray) throws XMLStreamException {
-    var inputStream = new ByteArrayInputStream(byteArray);
+  private static Map<String, Object> getStringObjectMap(XmlParserConfig xmlParserConfig, InputStream inputStream) throws XMLStreamException {
     var xmlInputFactory = XMLInputFactory.newInstance();
     var reader = xmlInputFactory.createXMLEventReader(inputStream);
     ArrayDeque<XmlPath> path = new ArrayDeque<>();
