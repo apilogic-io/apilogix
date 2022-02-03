@@ -1,15 +1,13 @@
 package io.gihub.apilogic.xml.parser;
 
+import io.gihub.apilogic.xml.parser.config.PropertyOperation;
 import io.gihub.apilogic.xml.parser.config.XmlPath;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FunctionUtils {
 
@@ -40,24 +38,55 @@ public class FunctionUtils {
     input.putAll(rootXmlPath.getValues());
     if (isArray) {
       var arr = new ArrayList<>();
-      input.put(rootXmlPath.getCurrentPath(), arr);
+      input.put(rootXmlPath.getPropertyName(), arr);
       rootXmlPath.getChildren().forEach(ch -> {
         Map el = new HashMap();
         represent(ch, arrayRepresentation, el);
-        arr.add(el);
+        if(!el.isEmpty()) {
+          arr.add(el);
+        }
       });
     } else {
       rootXmlPath.getChildren().forEach(ch -> {
         Map el = new HashMap();
         represent(ch, arrayRepresentation, el);
-        if (el.get(ch.getCurrentPath()) != null) {
+        if (el.get(ch.getPropertyName()) != null) {
           input.putAll(el);
         } else {
           Map res = new HashMap();
-          res.put(ch.getCurrentPath(), el);
+          res.put(ch.getPropertyName(), el);
           input.putAll(res);
         }
       });
     }
   }
+
+  public static String resolveThePropertyName(String actualKey, List<PropertyOperation> propertyOperations) {
+    var property = actualKey;
+    for (PropertyOperation propertyOperation: propertyOperations) {
+      var regex = propertyOperation.getProperty();
+      if(property.matches(regex)) {
+        for (String operation: propertyOperation.getOperations()) {
+          if(operation.contains("replace")) {
+            var replace = replaceArgs(operation);
+            property = property.replace(replace[0], replace[1].replace("'", ""));
+          }
+          if(operation.contains("camelize")) {
+            property = property.substring(0, 1).toLowerCase(Locale.ROOT) + property.substring(1);
+          }
+          if(operation.contains("ignore")) {
+            return null;
+          }
+        }
+      }
+    }
+    return property;
+  }
+
+  private static String[] replaceArgs(String replace) {
+    replace = replace.replace("replace(", "").trim();
+    replace = replace.replace(")", "").trim();
+    return replace.split(",");
+  }
+
 }

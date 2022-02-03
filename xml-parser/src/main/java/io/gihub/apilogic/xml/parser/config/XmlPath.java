@@ -1,22 +1,28 @@
 package io.gihub.apilogic.xml.parser.config;
 
+import io.gihub.apilogic.xml.parser.FunctionUtils;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class XmlPath {
   private String currentPath;
+  private String propertyName;
   private String path;
   private XmlPath parent;
   private Map<String, String> values = new HashMap<>();
   private List<XmlPath> siblings = new ArrayList<>();
   private List<XmlPath> children = new ArrayList<>();
 
-  public XmlPath(String path, ArrayDeque<XmlPath> tree, List<Map<String, Integer>> move) {
+  public XmlPath(String path,
+                 ArrayDeque<XmlPath> tree,
+                 List<Map<String, Integer>> move,
+                 List<PropertyOperation> propertyOperations) {
     this.currentPath = path;
-    init(tree, move);
+    init(tree, move, propertyOperations);
   }
 
-  private void init(ArrayDeque<XmlPath> tree, List<Map<String, Integer>> moveList) {
+  private void init(ArrayDeque<XmlPath> tree, List<Map<String, Integer>> moveList, List<PropertyOperation> propertyOperations) {
     String temp = tree.stream().map(XmlPath::getCurrentPath).collect(Collectors.joining("/"));
     Integer directionToMove = moveList.stream().filter(move -> move.entrySet().stream()
       .anyMatch(entry -> entry.getKey().equals(currentPath))
@@ -37,6 +43,7 @@ public class XmlPath {
         xmlPath.getChildren().add(this);
       });
     }
+    this.propertyName = FunctionUtils.resolveThePropertyName(this.currentPath, propertyOperations);
   }
 
   public Map<String, String> getValues() {
@@ -49,10 +56,6 @@ public class XmlPath {
 
   public String getCurrentPath() {
     return currentPath;
-  }
-
-  public void setCurrentPath(String currentPath) {
-    this.currentPath = currentPath;
   }
 
   public String getPath() {
@@ -85,6 +88,10 @@ public class XmlPath {
 
   public void setChildren(List<XmlPath> children) {
     this.children = children;
+  }
+
+  public String getPropertyName() {
+    return propertyName;
   }
 
   @Override

@@ -1,6 +1,7 @@
 package io.gihub.apilogic.xml.parser;
 
 
+import io.gihub.apilogic.xml.parser.config.PropertyOperation;
 import io.gihub.apilogic.xml.parser.config.XmlParserConfig;
 import io.gihub.apilogic.xml.parser.config.XmlPath;
 import org.yaml.snakeyaml.Yaml;
@@ -17,8 +18,7 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
-import static io.gihub.apilogic.xml.parser.FunctionUtils.getRequestXml;
-import static io.gihub.apilogic.xml.parser.FunctionUtils.represent;
+import static io.gihub.apilogic.xml.parser.FunctionUtils.*;
 
 public class XmlParser {
 
@@ -62,7 +62,7 @@ public class XmlParser {
     while (reader.hasNext()) {
       XMLEvent nextEvent = reader.nextEvent();
       if (nextEvent.isStartElement()) {
-        extracted(reader, path, xmlParserConfig.getMove(), nextEvent);
+        extracted(reader, path, xmlParserConfig.getMove(), xmlParserConfig.getPropertyOperations(), nextEvent);
       }
       if (nextEvent.isEndElement()) {
         EndElement elementElement = nextEvent.asEndElement();
@@ -78,19 +78,22 @@ public class XmlParser {
   private static void extracted(XMLEventReader reader,
                                 ArrayDeque<XmlPath> path,
                                 List<Map<String, Integer>> move,
+                                List<PropertyOperation> propertyOperations,
                                 XMLEvent nextEvent) {
     StartElement startElement = nextEvent.asStartElement();
-    XmlPath xmlPath = new XmlPath(startElement.getName().getLocalPart(), path, move);
+    XmlPath xmlPath = new XmlPath(startElement.getName().getLocalPart(), path, move, propertyOperations);
     path.addLast(xmlPath);
-    Map<String, String> values = getValues(reader, startElement, path, move);
+    Map<String, String> values = getValues(reader, startElement, path, move, propertyOperations);
     xmlPath.setValues(values);
   }
 
   private static Map<String, String> getValues(XMLEventReader reader,
                                                StartElement startElement,
                                                ArrayDeque<XmlPath> path,
-                                               List<Map<String, Integer>> move) {
-    Map<String, String> attrValues = getAttributesValues(startElement);
+                                               List<Map<String, Integer>> move,
+                                               List<PropertyOperation> propertyOperations
+                                               ) {
+    Map<String, String> attrValues = getAttributesValues(startElement, propertyOperations);
     XMLEvent next;
     try {
       next = reader.nextEvent();
@@ -98,11 +101,14 @@ public class XmlParser {
         String value = String.valueOf(next.asCharacters().getData());
         String attrKey = startElement.getName().getLocalPart();
         if (isaValueNode(value.replaceAll("\\s+", ""))) {
-          attrValues.put(attrKey, value);
+          attrKey = resolveThePropertyName(attrKey, propertyOperations);
+          if(attrKey != null) {
+            attrValues.put(attrKey, value);
+          }
         }
       } else {
         if(next.isStartElement()) {
-          extracted(reader, path, move, next);
+          extracted(reader, path, move, propertyOperations, next);
         }
         else if (next.isEndElement()) {
           if (!path.isEmpty()) {
@@ -116,12 +122,15 @@ public class XmlParser {
     return attrValues;
   }
 
-  private static Map<String, String> getAttributesValues(StartElement startElement) {
+  private static Map<String, String> getAttributesValues(StartElement startElement, List<PropertyOperation> propertyOperations) {
     Map<String, String> attributeValues = new HashMap<>();
     Iterator<Attribute> attributeIterator = startElement.getAttributes();
     while (attributeIterator.hasNext()) {
       Attribute attribute = attributeIterator.next();
-      attributeValues.put(attribute.getName().getLocalPart(), attribute.getValue());
+      var key = resolveThePropertyName(attribute.getName().getLocalPart(), propertyOperations);
+      if(key != null) {
+        attributeValues.put(key, attribute.getValue());
+      }
     }
     return attributeValues;
   }

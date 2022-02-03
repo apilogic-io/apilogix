@@ -43,4 +43,23 @@ public class XmlParserTest {
         });
     }
 
+    @Test
+    public void testDUReplacement() throws IOException, XMLStreamException {
+        var url = getClass().getClassLoader().getResource("./samples/countriesWithOpDUProperties.xml");
+        var config = getClass().getClassLoader().getResource("./configs/countriesWithPropertiesOp.yaml");
+        Assertions.assertNotNull(config);
+        var response = XmlParser.parse(url, config);
+        Assertions.assertNotNull(response);
+        Assertions.assertNotNull(response.get("countries"));
+        var countries = ((List)response.get("countries"));
+        Assertions.assertFalse(countries.isEmpty());
+        countries.forEach(country -> Assertions.assertNotNull(((Map) country).get("countryName")));
+        countries.forEach(country -> {
+            var countryFeedBacks = ((Map) country).get("countryFeedBacks");
+            Assertions.assertNotNull(countryFeedBacks);
+            Assertions.assertTrue(countryFeedBacks instanceof List);
+            Assertions.assertFalse(((List<?>) countryFeedBacks).isEmpty());
+        });
+    }
+
 }

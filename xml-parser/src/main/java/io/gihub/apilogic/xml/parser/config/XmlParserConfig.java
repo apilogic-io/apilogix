@@ -9,13 +9,17 @@ public class XmlParserConfig {
   private String contextPath;
   private List<String> arrayPaths = new ArrayList<>();
   private List<Map<String, Integer>> move = new ArrayList<>();
+  private List<PropertyOperation> propertyOperations = new ArrayList<>();
 
   public XmlParserConfig() {
   }
 
-  public XmlParserConfig(String contextPath, List<String> arrayPaths) {
+  public XmlParserConfig(String contextPath,
+                         List<String> arrayPaths,
+                         List<PropertyOperation> propertyOperations) {
     this.contextPath = contextPath;
     this.arrayPaths = arrayPaths;
+    this.propertyOperations = propertyOperations;
   }
 
   public String getContextPath() {
@@ -32,6 +36,14 @@ public class XmlParserConfig {
 
   public void setArrayPaths(List<String> arrayPaths) {
     this.arrayPaths = arrayPaths;
+  }
+
+  public List<PropertyOperation> getPropertyOperations() {
+    return propertyOperations;
+  }
+
+  public void setPropertyOperations(List<PropertyOperation> propertyOperations) {
+    this.propertyOperations = propertyOperations;
   }
 
   public List<Map<String, Integer>> getMove() {
