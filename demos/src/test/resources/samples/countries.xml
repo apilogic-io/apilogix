@@ -1,0 +1,443 @@
+<OTA_ReadRS xmlns="http://www.opentravel.org/OTA/2003/05" TimeStamp="2021-04-06T10:31:51">
+    <Success/>
+    <ReadResponse>
+        <Countries>
+            <Country CountryCode="30">
+                <CountryName>ANDORRA</CountryName>
+                <CountryISO>AD</CountryISO>
+            </Country>
+            <Country CountryCode="44">
+                <CountryName>UNITED ARAB EMIRATES</CountryName>
+                <CountryISO>AE</CountryISO>
+            </Country>
+            <Country CountryCode="183">
+                <CountryName>ANGUILLA</CountryName>
+                <CountryISO>AI</CountryISO>
+            </Country>
+            <Country CountryCode="112">
+                <CountryName>ALBANIA</CountryName>
+                <CountryISO>AL</CountryISO>
+            </Country>
+            <Country CountryCode="187">
+                <CountryName>NETHERLANDS ANTILLES</CountryName>
+                <CountryISO>AN</CountryISO>
+            </Country>
+            <Country CountryCode="19">
+                <CountryName>ARGENTINA</CountryName>
+                <CountryISO>AR</CountryISO>
+            </Country>
+            <Country CountryCode="12">
+                <CountryName>AUSTRIA</CountryName>
+                <CountryISO>AT</CountryISO>
+            </Country>
+            <Country CountryCode="178">
+                <CountryName>ARUBA</CountryName>
+                <CountryISO>AW</CountryISO>
+            </Country>
+            <Country CountryCode="130">
+                <CountryName>BOSNIA AND HERZEGOVINA</CountryName>
+                <CountryISO>BA</CountryISO>
+            </Country>
+            <Country CountryCode="88">
+                <CountryName>BARBADOS</CountryName>
+                <CountryISO>BB</CountryISO>
+            </Country>
+            <Country CountryCode="170">
+                <CountryName>BANGLADESH</CountryName>
+                <CountryISO>BD</CountryISO>
+            </Country>
+            <Country CountryCode="14">
+                <CountryName>BELGIUM</CountryName>
+                <CountryISO>BE</CountryISO>
+            </Country>
+            <Country CountryCode="99">
+                <CountryName>BULGARIA</CountryName>
+                <CountryISO>BG</CountryISO>
+            </Country>
+            <Country CountryCode="32">
+                <CountryName>BAHRAIN</CountryName>
+                <CountryISO>BH</CountryISO>
+            </Country>
+            <Country CountryCode="162">
+                <CountryName>BERMUDA</CountryName>
+                <CountryISO>BM</CountryISO>
+            </Country>
+            <Country CountryCode="115">
+                <CountryName>BOLIVIA</CountryName>
+                <CountryISO>BO</CountryISO>
+            </Country>
+            <Country CountryCode="27">
+                <CountryName>BRAZIL</CountryName>
+                <CountryISO>BR</CountryISO>
+            </Country>
+            <Country CountryCode="89">
+                <CountryName>BAHAMAS</CountryName>
+                <CountryISO>BS</CountryISO>
+            </Country>
+            <Country CountryCode="177">
+                <CountryName>BOTSWANA</CountryName>
+                <CountryISO>BW</CountryISO>
+            </Country>
+            <Country CountryCode="114">
+                <CountryName>BELIZE</CountryName>
+                <CountryISO>BZ</CountryISO>
+            </Country>
+            <Country CountryCode="194">
+                <CountryName>REPUBLIC OF THE CONG</CountryName>
+                <CountryISO>CG</CountryISO>
+            </Country>
+            <Country CountryCode="28">
+                <CountryName>SWITZERLAND</CountryName>
+                <CountryISO>CH</CountryISO>
+            </Country>
+            <Country CountryCode="37">
+                <CountryName>CHILE</CountryName>
+                <CountryISO>CL</CountryISO>
+            </Country>
+            <Country CountryCode="38">
+                <CountryName>CHINA</CountryName>
+                <CountryISO>CN</CountryISO>
+            </Country>
+            <Country CountryCode="39">
+                <CountryName>COLOMBIA</CountryName>
+                <CountryISO>CO</CountryISO>
+            </Country>
+            <Country CountryCode="90">
+                <CountryName>COSTA RICA</CountryName>
+                <CountryISO>CR</CountryISO>
+            </Country>
+            <Country CountryCode="161">
+                <CountryName>CUBA</CountryName>
+                <CountryISO>CU</CountryISO>
+            </Country>
+            <Country CountryCode="167">
+                <CountryName>CAPE VERDE</CountryName>
+                <CountryISO>CV</CountryISO>
+            </Country>
+            <Country CountryCode="91">
+                <CountryName>CYPRUS</CountryName>
+                <CountryISO>CY</CountryISO>
+            </Country>
+            <Country CountryCode="5">
+                <CountryName>CZECH REPUBLIC</CountryName>
+                <CountryISO>CZ</CountryISO>
+            </Country>
+            <Country CountryCode="11">
+                <CountryName>GERMANY</CountryName>
+                <CountryISO>DE</CountryISO>
+            </Country>
+            <Country CountryCode="8">
+                <CountryName>DENMARK</CountryName>
+                <CountryISO>DK</CountryISO>
+            </Country>
+            <Country CountryCode="77">
+                <CountryName>DOMINICAN REPUBLIC</CountryName>
+                <CountryISO>DO</CountryISO>
+            </Country>
+            <Country CountryCode="42">
+                <CountryName>ECUADOR</CountryName>
+                <CountryISO>EC</CountryISO>
+            </Country>
+            <Country CountryCode="100">
+                <CountryName>ESTONIA</CountryName>
+                <CountryISO>EE</CountryISO>
+            </Country>
+            <Country CountryCode="43">
+                <CountryName>EGYPT</CountryName>
+                <CountryISO>EG</CountryISO>
+            </Country>
+            <Country CountryCode="1">
+                <CountryName>SPAIN</CountryName>
+                <CountryISO>ES</CountryISO>
+            </Country>
+            <Country CountryCode="159">
+                <CountryName>ETHIOPIA</CountryName>
+                <CountryISO>ET</CountryISO>
+            </Country>
+            <Country CountryCode="4">
+                <CountryName>FRANCE</CountryName>
+                <CountryISO>FR</CountryISO>
+            </Country>
+            <Country CountryCode="13">
+                <CountryName>UNITED KINGDOM</CountryName>
+                <CountryISO>GB</CountryISO>
+            </Country>
+            <Country CountryCode="172">
+                <CountryName>GRENADA</CountryName>
+                <CountryISO>GD</CountryISO>
+            </Country>
+            <Country CountryCode="164">
+                <CountryName>GEORGIA</CountryName>
+                <CountryISO>GE</CountryISO>
+            </Country>
+            <Country CountryCode="47">
+                <CountryName>GHANA</CountryName>
+                <CountryISO>GH</CountryISO>
+            </Country>
+            <Country CountryCode="50">
+                <CountryName>GUADELOUPE</CountryName>
+                <CountryISO>GP</CountryISO>
+            </Country>
+            <Country CountryCode="16">
+                <CountryName>GREECE</CountryName>
+                <CountryISO>GR</CountryISO>
+            </Country>
+            <Country CountryCode="122">
+                <CountryName>GUATEMALA</CountryName>
+                <CountryISO>GT</CountryISO>
+            </Country>
+            <Country CountryCode="113">
+                <CountryName>CROATIA</CountryName>
+                <CountryISO>HR</CountryISO>
+            </Country>
+            <Country CountryCode="6">
+                <CountryName>HUNGARY</CountryName>
+                <CountryISO>HU</CountryISO>
+            </Country>
+            <Country CountryCode="53">
+                <CountryName>INDONESIA</CountryName>
+                <CountryISO>ID</CountryISO>
+            </Country>
+            <Country CountryCode="23">
+                <CountryName>IRELAND</CountryName>
+                <CountryISO>IE</CountryISO>
+            </Country>
+            <Country CountryCode="55">
+                <CountryName>ISRAEL</CountryName>
+                <CountryISO>IL</CountryISO>
+            </Country>
+            <Country CountryCode="111">
+                <CountryName>INDIA</CountryName>
+                <CountryISO>IN</CountryISO>
+            </Country>
+            <Country CountryCode="200">
+                <CountryName>IRAQ</CountryName>
+                <CountryISO>IQ</CountryISO>
+            </Country>
+            <Country CountryCode="102">
+                <CountryName>ICELAND</CountryName>
+                <CountryISO>IS</CountryISO>
+            </Country>
+            <Country CountryCode="3">
+                <CountryName>ITALY</CountryName>
+                <CountryISO>IT</CountryISO>
+            </Country>
+            <Country CountryCode="93">
+                <CountryName>JAMAICA</CountryName>
+                <CountryISO>JM</CountryISO>
+            </Country>
+            <Country CountryCode="49">
+                <CountryName>JORDAN</CountryName>
+                <CountryISO>JO</CountryISO>
+            </Country>
+            <Country CountryCode="48">
+                <CountryName>JAPAN</CountryName>
+                <CountryISO>JP</CountryISO>
+            </Country>
+            <Country CountryCode="140">
+                <CountryName>KENYA</CountryName>
+                <CountryISO>KE</CountryISO>
+            </Country>
+            <Country CountryCode="40">
+                <CountryName>SOUTH KOREA</CountryName>
+                <CountryISO>KR</CountryISO>
+            </Country>
+            <Country CountryCode="110">
+                <CountryName>KUWAIT</CountryName>
+                <CountryISO>KW</CountryISO>
+            </Country>
+            <Country CountryCode="109">
+                <CountryName>LEBANON</CountryName>
+                <CountryISO>LB</CountryISO>
+            </Country>
+            <Country CountryCode="126">
+                <CountryName>SRI LANKA</CountryName>
+                <CountryISO>LK</CountryISO>
+            </Country>
+            <Country CountryCode="60">
+                <CountryName>LITHUANIA</CountryName>
+                <CountryISO>LT</CountryISO>
+            </Country>
+            <Country CountryCode="61">
+                <CountryName>LUXEMBOURG</CountryName>
+                <CountryISO>LU</CountryISO>
+            </Country>
+            <Country CountryCode="63">
+                <CountryName>MAROCCO</CountryName>
+                <CountryISO>MA</CountryISO>
+            </Country>
+            <Country CountryCode="105">
+                <CountryName>MONACO</CountryName>
+                <CountryISO>MC</CountryISO>
+            </Country>
+            <Country CountryCode="160">
+                <CountryName>MONTENEGRO</CountryName>
+                <CountryISO>ME</CountryISO>
+            </Country>
+            <Country CountryCode="175">
+                <CountryName>SAINT-MARTIN</CountryName>
+                <CountryISO>MF</CountryISO>
+            </Country>
+            <Country CountryCode="184">
+                <CountryName>MARTINIQUE</CountryName>
+                <CountryISO>MQ</CountryISO>
+            </Country>
+            <Country CountryCode="26">
+                <CountryName>MALTA</CountryName>
+                <CountryISO>MT</CountryISO>
+            </Country>
+            <Country CountryCode="65">
+                <CountryName>MAURITIUS</CountryName>
+                <CountryISO>MU</CountryISO>
+            </Country>
+            <Country CountryCode="174">
+                <CountryName>MALDIVES</CountryName>
+                <CountryISO>MV</CountryISO>
+            </Country>
+            <Country CountryCode="21">
+                <CountryName>MEXICO</CountryName>
+                <CountryISO>MX</CountryISO>
+            </Country>
+            <Country CountryCode="62">
+                <CountryName>MALAYSIA</CountryName>
+                <CountryISO>MY</CountryISO>
+            </Country>
+            <Country CountryCode="66">
+                <CountryName>MOZAMBIQUE</CountryName>
+                <CountryISO>MZ</CountryISO>
+            </Country>
+            <Country CountryCode="72">
+                <CountryName>NIGERIA</CountryName>
+                <CountryISO>NG</CountryISO>
+            </Country>
+            <Country CountryCode="119">
+                <CountryName>NICARAGUA</CountryName>
+                <CountryISO>NI</CountryISO>
+            </Country>
+            <Country CountryCode="7">
+                <CountryName>NETHERLANDS</CountryName>
+                <CountryISO>NL</CountryISO>
+            </Country>
+            <Country CountryCode="73">
+                <CountryName>OMAN</CountryName>
+                <CountryISO>OM</CountryISO>
+            </Country>
+            <Country CountryCode="96">
+                <CountryName>PANAMA</CountryName>
+                <CountryISO>PA</CountryISO>
+            </Country>
+            <Country CountryCode="74">
+                <CountryName>PERU</CountryName>
+                <CountryISO>PE</CountryISO>
+            </Country>
+            <Country CountryCode="45">
+                <CountryName>PHILIPPINES</CountryName>
+                <CountryISO>PH</CountryISO>
+            </Country>
+            <Country CountryCode="25">
+                <CountryName>POLAND</CountryName>
+                <CountryISO>PL</CountryISO>
+            </Country>
+            <Country CountryCode="9">
+                <CountryName>PORTUGAL</CountryName>
+                <CountryISO>PT</CountryISO>
+            </Country>
+            <Country CountryCode="76">
+                <CountryName>QATAR</CountryName>
+                <CountryISO>QA</CountryISO>
+            </Country>
+            <Country CountryCode="78">
+                <CountryName>REUNION ISLAND</CountryName>
+                <CountryISO>RE</CountryISO>
+            </Country>
+            <Country CountryCode="24">
+                <CountryName>ROMANIA</CountryName>
+                <CountryISO>RO</CountryISO>
+            </Country>
+            <Country CountryCode="123">
+                <CountryName>SERBIA MONTENEGRO</CountryName>
+                <CountryISO>RS</CountryISO>
+            </Country>
+            <Country CountryCode="80">
+                <CountryName>RUSSIA</CountryName>
+                <CountryISO>RU</CountryISO>
+            </Country>
+            <Country CountryCode="31">
+                <CountryName>SAUDI ARABIA</CountryName>
+                <CountryISO>SA</CountryISO>
+            </Country>
+            <Country CountryCode="134">
+                <CountryName>SEYCHELLES</CountryName>
+                <CountryISO>SC</CountryISO>
+            </Country>
+            <Country CountryCode="190">
+                <CountryName>SUDAN</CountryName>
+                <CountryISO>SD</CountryISO>
+            </Country>
+            <Country CountryCode="82">
+                <CountryName>SINGAPORE</CountryName>
+                <CountryISO>SG</CountryISO>
+            </Country>
+            <Country CountryCode="108">
+                <CountryName>SLOVENIA</CountryName>
+                <CountryISO>SI</CountryISO>
+            </Country>
+            <Country CountryCode="83">
+                <CountryName>SLOVAKIA (SLOVAK REPUBLIC)</CountryName>
+                <CountryISO>SK</CountryISO>
+            </Country>
+            <Country CountryCode="225">
+                <CountryName>SIERRA LEONE</CountryName>
+                <CountryISO>SL</CountryISO>
+            </Country>
+            <Country CountryCode="132">
+                <CountryName>SAN MARINO</CountryName>
+                <CountryISO>SM</CountryISO>
+            </Country>
+            <Country CountryCode="206">
+                <CountryName>SAO TOME AND PRINCIP</CountryName>
+                <CountryISO>ST</CountryISO>
+            </Country>
+            <Country CountryCode="98">
+                <CountryName>TURKS AND CAICOS ISLANDS</CountryName>
+                <CountryISO>TC</CountryISO>
+            </Country>
+            <Country CountryCode="68">
+                <CountryName>THAILAND</CountryName>
+                <CountryISO>TH</CountryISO>
+            </Country>
+            <Country CountryCode="71">
+                <CountryName>TUNISIA</CountryName>
+                <CountryISO>TN</CountryISO>
+            </Country>
+            <Country CountryCode="10">
+                <CountryName>TURKEY</CountryName>
+                <CountryISO>TR</CountryISO>
+            </Country>
+            <Country CountryCode="117">
+                <CountryName>TAIWAN</CountryName>
+                <CountryISO>TW</CountryISO>
+            </Country>
+            <Country CountryCode="69">
+                <CountryName>TANZANIA</CountryName>
+                <CountryISO>TZ</CountryISO>
+            </Country>
+            <Country CountryCode="116">
+                <CountryName>UKRAINE</CountryName>
+                <CountryISO>UA</CountryISO>
+            </Country>
+            <Country CountryCode="207">
+                <CountryName>UGANDA</CountryName>
+                <CountryISO>UG</CountryISO>
+            </Country>
+            <Country CountryCode="17">
+                <CountryName>UNITED STATES</CountryName>
+                <CountryISO>US</CountryISO>
+            </Country>
+            <Country CountryCode="84">
+                <CountryName>SOUTH AFRICA</CountryName>
+                <CountryISO>ZA</CountryISO>
+            </Country>
+        </Countries>
+    </ReadResponse>
+</OTA_ReadRS>

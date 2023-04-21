@@ -1,38 +1,74 @@
-buildscript {
-  repositories {
-    jcenter()
-  }
-  dependencies {
-    classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-  }
+plugins {
+    id "io.github.gradle-nexus.publish-plugin" version "1.1.0"
+    id "org.jetbrains.dokka" version "1.7.20"
+    id "signing"
+    id "maven-publish"
+    id "java-library"
 }
 
-apply plugin: 'com.bmuschko.nexus'
+allprojects {
+    ext {
+        versions = [
+                lombok                 : '1.18.24',
+                slf4j                  : '1.7.36',
+                log4j                  : '2.17.1',
+                spring_boot            : '2.7.5',
+                kafka                  : '2.9.3',
+                postgresql             : '2.7.5',
+                hibernate_validator    : '6.0.13.Final',
+                jjwt_api               : '0.11.5',
+                aws_java_sdk           : '1.12.334',
+                jackson_dataformat_yaml: '2.14.0',
+                jolt                   : '0.1.1'
+        ]
+    }
+}
 
 subprojects {
-  apply plugin: 'java'
-  apply plugin: 'com.bmuschko.nexus'
-  group = "io.github.apilogic-io"
-  version = "0.1.4"
+    apply plugin: 'java'
+    group = "io.github.apilogic-io"
+    version = "0.1.4"
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        implementation 'org.yaml:snakeyaml:1.28'
+        implementation platform('com.fasterxml.jackson:jackson-bom:2.13.3')
+        implementation "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$versions.jackson_dataformat_yaml"
+        implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$versions.jackson_dataformat_yaml"
+        implementation "org.apache.logging.log4j:log4j-bom:$versions.log4j"
+        implementation 'org.slf4j:slf4j-api'
+        implementation 'org.apache.velocity:velocity-engine-core:2.3'
+        implementation "com.amazonaws:aws-java-sdk-s3:$versions.aws_java_sdk"
+        implementation "org.hibernate:hibernate-validator:$versions.hibernate_validator"
+        implementation "com.bazaarvoice.jolt:jolt-core:$versions.jolt"
+        implementation "com.bazaarvoice.jolt:json-utils:$versions.jolt"
+        implementation 'com.jayway.jsonpath:json-path:2.4.0'
+    }
+    plugins.withType(JavaPlugin).configureEach {
+        dependencies {
+            compileOnly "org.projectlombok:lombok:$versions.lombok"
 
-  extraArchive {
-    sources = true
-    tests = true
-    javadoc = true
-  }
+            testImplementation "org.projectlombok:lombok:$versions.lombok"
 
+            annotationProcessor "org.projectlombok:lombok:$versions.lombok"
 
-  repositories {
-    mavenCentral()
-  }
-  dependencies {
-    compile (
-            'org.yaml:snakeyaml:1.28'
-    )
-  }
-  nexus {
-    sign = true
-    repositoryUrl = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
-    snapshotRepositoryUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-  }
+            testAnnotationProcessor "org.projectlombok:lombok:$versions.lombok"
+
+        }
+    }
+
+}
+
+group = 'io.github.apilog-io'
+nexusPublishing {
+    repositories {
+        sonatype {  //only for users registered in Sonatype after 24 Feb 2021
+            nexusUrl.set(uri("https://s01.oss.sonatype.org/service/local/"))
+            snapshotRepositoryUrl.set(uri("https://s01.oss.sonatype.org/content/repositories/snapshots/"))
+            packageGroup = "io.github.apilogic-io"
+            username.set(nexusUsername)
+            password.set(nexusPassword)
+        }
+    }
 }

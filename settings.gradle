@@ -1,2 +1,5 @@
 rootProject.name = 'apilogix'
 include 'xml-parser'
+include 'multiclient'
+include 'transformations'
+include 'demos'

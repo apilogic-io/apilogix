@@ -12,39 +12,56 @@ test {
     useJUnitPlatform()
 }
 
-modifyPom {
-    project {
-        name 'Apilogic io XMl Parser'
-        description 'Flatten xmls to Json using configurations'
-        url 'https://github.com/apilogic-io/apilogix'
-        inceptionYear '2021'
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
 
-        scm {
-            url 'https://github.com/apilogic-io/apilogix'
-            connection 'scm:git:git://github.com/apilogic-io/apilogix.git'
-            connection 'scm:git:git://github.com/apilogic-io/apilogix.git'
-        }
 
-        licenses {
-            license {
-                name 'The Apache Software License, Version 2.0'
-                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-                distribution 'repo'
-            }
-        }
 
-        developers {
-            developer {
-                name 'VRobu'
+publishing {
+    publications {
+        xmlParser(MavenPublication) {
+            from(components.java)
+            pom {
+                name = 'io.github.apilogix'
+                artifactId = 'xml-parser'
+                description.set("Flatten xmls to json using configurations")
+                url.set("https://github.com/apilogic-io/apilogix")
+                licenses {
+                    license {
+                        name.set("The Apache software licence, Version 2.0")
+                        url.set("https://opensource.org/licenses/Apache-2.0")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("Vrobu")
+                        name.set("Vitalie Robu")
+                        organization.set("omni-bellum")
+                        organizationUrl.set("https://omni-bellum.com/")
+                    }
+                }
+                scm {
+                    url.set(
+                            "https://github.com/apilogic-io/apilogix.git"
+                    )
+                    connection.set(
+                            "scm:git:git://github.com/apilogic-io/apilogix.git"
+                    )
+                    developerConnection.set(
+                            "scm:git:git://github.com/apilogic-io/apilogix.git"
+                    )
+                }
+                issueManagement {
+                    url.set("https://github.com/apilogic-io/apilogix/issues")
+                }
             }
         }
     }
 }
 
-archivesBaseName = 'xml-parser'
 
-nexus {
-    sign = true
-    repositoryUrl = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
-    snapshotRepositoryUrl = 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-}
+group = 'io.github.apilogix'
+version = '0.1.5-SNAPSHOT'
+archivesBaseName = 'xml-parser'

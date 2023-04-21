@@ -1,0 +1,286 @@
+[
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "response": {
+        "Hotels": {
+          "*": {
+            "Rooms": {
+              "*": {
+                "RPH": "=split(',',@(0))",
+                "RoomRates": {
+                  "*": {
+                    "Taxes|Supplements": {
+                      "*": {
+                        "IsPercentage": "=toBoolean(@(0))",
+                        "PerPax": "=toBoolean(@(0))",
+                        "PerNight": "=toBoolean(@(0))",
+                        "Included": "=toBoolean(@(0))",
+                        "Mandatory": "=toBoolean(@(0))",
+                        "PerStay": "=toBoolean(@(0))",
+                        "Type": "=toInteger(@(0))"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "Info": {
+              "Image": "=toString",
+              "Position": {
+                "Lon": "=toDouble",
+                "Lat": "=toDouble"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "modify-default-beta",
+    "spec": {
+      "response": {
+      "HotelCount": 0,
+      "Hotels": {
+        "*": {
+          "Rooms": {
+            "*": {
+              "Best": "0"
+            }
+          }
+        }
+      }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "response": {
+        "HotelCount": "count",
+        "Hotels": {
+          "*": {
+            "BestPrice": {
+              "Amount": "hotels[&2].bestPrice.value",
+              "Currency": "hotels[&2].bestPrice.currency"
+            },
+            "Info": {
+              "HotelCode": "hotels[&2].source.id",
+              "#PARSEC": "hotels[&2].source.name",
+              "HotelName": "hotels[&2].name",
+              "HotelProvider": "hotels[&2].supplier.name",
+              "Rating": "hotels[&2].rating",
+              "Image": {
+                "{}": {
+                  "": "hotels[&4].mainImage.url"
+                },
+                "*": {
+                  "@(1)": "hotels[&4].mainImage.url"
+                }
+              },
+              "Recommended": {
+                "0": {
+                  "#false": "hotels[&4].recommended"
+                },
+                "1": {
+                  "#true": "hotels[&4].recommended"
+                }
+              },
+              "HotelCityCode": "hotels[&2].city.source.id",
+              "Address": {
+                "CountryName": "hotels[&3].country.name",
+                "CountryISOCode": "hotels[&3].country.abbr.iso2",
+                "CityName": "hotels[&3].city.name",
+                "#PARSEC": "hotels[&3].city.source.name",
+                "AddressLine": "hotels[&3].location.address"
+              },
+              "Position": {
+                "Lon": "hotels[&3].location.geo.coordinates[]",
+                "Lat": "hotels[&3].location.geo.coordinates[]"
+              },
+              "#POINT": "hotels[&3].location.geo.type",
+              "Contacts": {
+                "Phone": "hotels[&2].phones[].public",
+                "Website": "hotels[&2].website",
+                "Fax": "hotels[&2].phones[].public"
+              },
+              "Policy": {
+                "CheckOutTime": "hotels[&3].policies.checkoutTime",
+                "CheckInTime": "hotels[&3].policies.checkinTime"
+              }
+            },
+            "Rooms": {
+              "*": {
+                "Best": {
+                  "0": {
+                    "#false": "hotels[&5].rooms[&3].best"
+                  },
+                  "1": {
+                    "#true": "hotels[&5].rooms[&3].best"
+                  }
+                },
+                "Status": "hotels[&3].rooms[&1].status",
+                "RoomType": {
+                  "Code": "hotels[&4].rooms[&2].source.id",
+                  "#PARSEC": "hotels[&4].rooms[&2].source.name",
+                  "Name": "hotels[&4].rooms[&2].name"
+                },
+                "RPH": "hotels[&3].rooms[&1].rph",
+                "RoomRates": {
+                  "*": {
+                    "Supplements": {
+                      "*": {
+                        "@": "hotels[&7].rooms[&5].rates[&3].allSupplements[#1]"
+                      }
+                    },
+                    "Taxes": {
+                      "*": {
+                        "@": "hotels[&7].rooms[&5].rates[&3].allSupplements[#1]"
+                      }
+                    },
+                    "NonRefundable": {
+                      "0": {
+                        "#false": "hotels[&7].rooms[&5].rates[&3].nonRefundable"
+                      },
+                      "1": {
+                        "#true": "hotels[&7].rooms[&5].rates[&3].nonRefundable"
+                      }
+                    },
+                    "BookingCode": "hotels[&5].rooms[&3].rates[&1].bookingCode",
+                    "MealPlan": "hotels[&5].rooms[&3].rates[&1].mealPlan",
+                    "Total": {
+                      "Amount": "hotels[&6].rooms[&4].rates[&2].total.value",
+                      "Currency": "hotels[&6].rooms[&4].rates[&2].total.currency"
+                    },
+                    "CancelPenalties": {
+                      "*": {
+                        "Deadline": {
+                          "TimeUnit": "hotels[&8].rooms[&6].rates[&4].cancelPolicies[&2].deadline.timeUnit",
+                          "Units": "hotels[&8].rooms[&6].rates[&4].cancelPolicies[&2].deadline.units"
+                        },
+                        "Charge": {
+                          "Amount": "hotels[&8].rooms[&6].rates[&4].cancelPolicies[&2].charge.value",
+                          "Currency": "hotels[&8].rooms[&6].rates[&4].cancelPolicies[&2].charge.currency"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "count": "count",
+      "hotels": {
+        "*": {
+          "*": "hotels[&1].&",
+          "rooms": {
+            "*": {
+              "*": "hotels[&3].rooms[&1].&",
+              "rates": {
+                "*": {
+                  "*": "hotels[&5].rooms[&3].rates[&1].&",
+                  "allSupplements": {
+                    "*": {
+                      "*": {
+                        "Type": "hotels[&8].rooms[&6].rates[&4].supplements[&1].type",
+                        "Description": "hotels[&8].rooms[&6].rates[&4].supplements[&1].description",
+                        "Total": {
+                          "Amount": "hotels[&9].rooms[&7].rates[&5].supplements[&2].total.value",
+                          "Currency": "hotels[&9].rooms[&7].rates[&5].supplements[&2].total.currency"
+                        },
+                        "IsPercentage": "hotels[&8].rooms[&6].rates[&4].supplements[&1].isPercentage",
+                        "PerPax": "hotels[&8].rooms[&6].rates[&4].supplements[&1].perPax",
+                        "PerNight": "hotels[&8].rooms[&6].rates[&4].supplements[&1].perNight",
+                        "Included": "hotels[&8].rooms[&6].rates[&4].supplements[&1].included",
+                        "Units": "hotels[&8].rooms[&6].rates[&4].supplements[&1].units",
+                        "Mandatory": "hotels[&8].rooms[&6].rates[&4].supplements[&1].mandatory",
+                        "PerStay": "hotels[&8].rooms[&6].rates[&4].supplements[&1].perStay"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "hotels": {
+        "*": {
+          "bestPrice": {
+            "value": "=toDouble"
+          },
+          "rooms": {
+            "*": {
+              "best": "=toBoolean",
+              "rates": {
+                "*": {
+                  "nonRefundable": ["=toBoolean", false],
+                  "total": {
+                    "value": "=toDouble"
+                  },
+                  "cancelPolicies": {
+                    "*": {
+                      "charge": {
+                        "value": "=toDouble"
+                      }
+                    }
+                  },
+                  "supplements": {
+                    "*": {
+                      "total": {
+                        "value": "=toDouble"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "recommended": "=toBoolean"
+        }
+      }
+    }
+  },
+  {
+    "operation": "default",
+    "spec": {
+      "count": 0,
+      "hotels": []
+    }
+  },
+  {
+    "operation": "remove",
+    "spec": {
+      "hotels": {
+        "*": {
+          "rooms": {
+            "*": {
+              "rates": {
+                "*": {
+                  "supplements": {
+                    "*": {
+                      "total": ""
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+]

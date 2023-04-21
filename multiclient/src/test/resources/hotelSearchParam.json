@@ -1,0 +1,31 @@
+{
+  "detailLevel": 2,
+  "taxDetails": true,
+  "supplementDetails": true,
+  "nonRefundable": true,
+  "currency": "EUR",
+  "hotelLocation": {
+    "type": "CityCode",
+    "value": "3610"
+  },
+  "dateRange": {
+    "start": "2023-02-10",
+    "end": "2023-02-12"
+  },
+  "roomPaxes": [
+    {
+      "rph": 1,
+      "travelers": [
+        {
+          "ageCode": "A",
+          "count": 2
+        },
+        {
+          "ageCode": "C",
+          "count": 1,
+          "age": 7
+        }
+      ]
+    }
+  ]
+}

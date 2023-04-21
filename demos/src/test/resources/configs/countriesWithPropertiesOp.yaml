@@ -1,0 +1,18 @@
+contextPath: "ReadResponse"
+arrayPaths:
+  - "OTA_ReadRS/ReadResponse/Countries"
+  - "OTA_ReadRS/ReadResponse/Countries/Country/CountryFeedBacks"
+  - "OTA_ReadRS/ReadResponse/Countries/Country/DUPesonVisits"
+propertyOperations:
+    - property: "^DU.*"
+      operations:
+        - replace(DU,'')
+        - camelize
+    - property: "nil"
+      operations:
+        - ignore
+    - property: ".*"
+      operations:
+        - camelize
+
+

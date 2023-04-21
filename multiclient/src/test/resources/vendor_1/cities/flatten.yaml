@@ -1,0 +1,13 @@
+contextPath: "OTA_HotelAvailRS"
+arrayPaths:
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels"
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels/RoomCandidates"
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels/RoomCandidates/RoomCandidate/Guests"
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels/Hotel/Rooms"
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels/Hotel/Rooms/Room/RoomRates"
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels/Hotel/Rooms/Room/RoomRates/RoomRate/CancelPenalties"
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels/Hotel/Rooms/Room/RoomRates/RoomRate/Supplements"
+  - "Envelope/Body/OTA_HotelAvailRS/Hotels/Hotel/Rooms/Room/RoomRates/RoomRate/Taxes"
+
+
+

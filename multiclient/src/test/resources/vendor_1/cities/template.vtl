@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><soap-env:Envelope xmlns:soap-env="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap-env:Header>
+    <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd">
+      <wsse:Username>$usernames["$body.context"].username</wsse:Username>
+      <wsse:Password>$usernames["$body.context"].password</wsse:Password>
+      <Context>eturia</Context>
+    </wsse:Security>
+  </soap-env:Header>
+  <soap-env:Body>
+    <OTA_HotelAvailRQ xmlns:wsu="http://search.eturia.parsec.es/NewAvailabilityServlet/hotelavail/OTA2014Compact" CancelPenalties="1" DetailLevel="2" SupplementDetails="1" TaxDetails="1">
+      <HotelSearch>
+        <Currency Code="$body.data.currency"/>
+        #if($body.data.hotelLocation.type == 'HotelCode')
+          <HotelRef HotelCode="$body.data.hotelLocation.value"/>
+          #elseif($body.data.hotelLocation.type == 'CityCode')
+            <HotelLocation CityCode="$body.data.hotelLocation.value"/>
+        #end
+        #if($body.data.rating && $body.data.rating.size() > 0)
+          <Rating Code="$utils.joinStringArray(",", $body.data.rating)"></Rating>
+        #end
+        <DateRange End="$body.data.dateRange.end" Start="$body.data.dateRange.start"/>
+        <RoomCandidates>
+          #foreach($room in $body.data.roomPaxes)
+            <RoomCandidate RPH="$room.rph">
+              <Guests>
+                #foreach($guest in $room.travelers)
+                  #if($guest.age)
+                    <Guest AgeCode="$guest.ageCode" Count="$guest.count" Age="$guest.age"/>
+                  #else
+                    <Guest AgeCode="$guest.ageCode" Count="$guest.count"/>
+                  #end
+                #end
+              </Guests>
+            </RoomCandidate>
+          #end
+        </RoomCandidates>
+      </HotelSearch>
+    </OTA_HotelAvailRQ>
+  </soap-env:Body>
+</soap-env:Envelope>

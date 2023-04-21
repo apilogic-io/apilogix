@@ -9,12 +9,27 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.*;
 
+/**
+ * Util class
+ */
 public class FunctionUtils {
 
+  /**
+   *
+   * @param url the path to file
+   * @return returns the content of file as xml String
+   * @throws IOException when read file fails
+   */
   public static String getRequestXml(URL url) throws IOException {
     return readLineByLineJava8(url);
   }
 
+  /**
+   *
+   * @param filePath the path to file
+   * @return returns the content of file as xml String
+   * @throws IOException when read file fails
+   */
   private static String readLineByLineJava8(URL filePath) throws IOException {
     if (filePath == null) {
       throw new RuntimeException();
@@ -30,6 +45,12 @@ public class FunctionUtils {
     }
   }
 
+  /**
+   *
+   * @param rootXmlPath the root element of the xml
+   * @param arrayRepresentation all the arrays in the xml
+   * @param input the map value of already processed xml
+   */
   @SuppressWarnings({"rawtypes", "unchecked"})
   public static void represent(XmlPath rootXmlPath,
                                List<String> arrayRepresentation,
@@ -61,6 +82,12 @@ public class FunctionUtils {
     }
   }
 
+  /**
+   *
+   * @param actualKey the xml key to be processed
+   * @param propertyOperations the operations applied
+   * @return the name of the property
+   */
   public static String resolveThePropertyName(String actualKey, List<PropertyOperation> propertyOperations) {
     var property = actualKey;
     for (PropertyOperation propertyOperation: propertyOperations) {
@@ -83,6 +110,11 @@ public class FunctionUtils {
     return property;
   }
 
+  /**
+   *
+   * @param replace replace sting regex with values
+   * @return processed string
+   */
   private static String[] replaceArgs(String replace) {
     replace = replace.replace("replace(", "").trim();
     replace = replace.replace(")", "").trim();
